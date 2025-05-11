@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jogos Olímpicos Paris 2024</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+      body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f8f9fa;
+    }
+    .container {
+      display: flex;
+      min-height: 100vh;
+    }
+    .sidebar {
+      width: 250px;
+      background-color: #002f6c;
+      color: white;
+      padding: 20px;
+    }
+    .sidebar h2 {
+      margin-top: 0;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+    .sidebar li {
+      padding: 10px;
+      cursor: pointer;
+      border-bottom: 1px solid #ffffff33;
+    }
+    .sidebar li:hover {
+      background-color: #004080;
+    }
+    .sublist {
+      list-style: none;
+      padding-left: 15px;
+    }
+    .sublist li {
+      background-color: #003366;
+      font-size: 14px;
+    }
+    .sublist li:hover {
+      background-color: #005099;
+    }
+    .content {
+      flex: 1;
+      padding: 40px;
+    }
+    .hidden {
+      display: none;
+    }
+    input[type="text"] {
+      padding: 8px;
+      width: 250px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 8px 16px;
+      background-color: #002f6c;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    button:hover {
+      background-color: #004080;
+    }
+    .subsection-title {
+      padding: 10px;
+      background-color: #001f4d;
+      font-weight: bold;
+      color: black;
+      font-size: 18px;
+    }
+    #back-button {
+      margin-bottom: 20px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar" id="sidebar">
+
+      <h2>Modalidades</h2>
+      <ul id="sports-list">
+        <li onclick="toggleSublist('atletismo-sublist', 'toggle-icon-atletismo')">Atletismo <span id="toggle-icon-atletismo">►</span></li>
+        <ul id="atletismo-sublist" class="sublist hidden">
+          <li onclick="toggleSublist('pista-sublist', 'toggle-icon-pista')" class="subsection-title">Provas de pista <span id="toggle-icon-pista">►</span></li>
+          <ul id="pista-sublist" class="sublist hidden">
+            <li onclick="showWinners('Revezamento 4 x 400m Misto')">Revezamento 4 x 400m Misto</li>
+            <li onclick="showWinners('10.000m masculino')">10.000m masculino</li>
+            <li onclick="showWinners('100m masculino')">100m masculino</li>
+            <li onclick="showWinners('110 m com barreiras masculino')">110 m com barreiras masculino</li>
+            <li onclick="showWinners('1500m masculino')">1500m masculino</li>
+            <li onclick="showWinners('200m masculino')">200m masculino</li>
+            <li onclick="showWinners('3000 m com obstáculos masculino')">3000 m com obstáculos masculino</li>
+            <li onclick="showWinners('Revezamento 4 x 100m masculino')">Revezamento 4 x 100m masculino</li>
+            <li onclick="showWinners('Revezamento 4 x 400 m masculino')">Revezamento 4 x 400 m masculino</li>
+            <li onclick="showWinners('400m masculino')">400m masculino</li>
+            <li onclick="showWinners('400 m com barreiras masculino')">400 m com barreiras masculino</li>
+            <li onclick="showWinners('5000m masculino')">5000m masculino</li>
+            <li onclick="showWinners('800m masculino')">800m masculino</li>
+            <li onclick="showWinners('10.000m feminino')">10.000m feminino</li>
+            <li onclick="showWinners('100m feminino')">100m feminino</li>
+            <li onclick="showWinners('100 m com barreiras feminino')">100 m com barreiras feminino</li>
+            <li onclick="showWinners('1500m feminino')">1500m feminino</li>
+            <li onclick="showWinners('200m feminino')">200m feminino</li>
+            <li onclick="showWinners('3000m com obstáculos feminino')">3000m com obstáculos feminino</li>
+            <li onclick="showWinners('Revezamento 4 x 100m feminino')">Revezamento 4 x 100m feminino</li>
+            <li onclick="showWinners('Revezamento 4 x 400 m feminino')">Revezamento 4 x 400 m feminino</li>
+            <li onclick="showWinners('400m feminino')">400m feminino</li>
+            <li onclick="showWinners('400 m com barreiras feminino')">400 m com barreiras feminino</li>
+            <li onclick="showWinners('5000m feminino')">5000m feminino</li>
+            <li onclick="showWinners('800m feminino')">800m feminino</li>
+          </ul>
+
+          <li onclick="toggleSublist('marchas-sublist', 'toggle-icon-marchas')" class="subsection-title">Marchas e Maratonas <span id="toggle-icon-marchas">►</span></li>
+          <ul id="marchas-sublist" class="sublist hidden">
+            <li onclick="showWinners('Maratona Corrida Caminhada Revezamento Misto')">Maratona Corrida Caminhada Revezamento Misto</li>
+            <li onclick="showWinners('Marcha Atlética Masculina de 20 km')">Marcha Atlética Masculina de 20 km</li>
+            <li onclick="showWinners('Maratona Masculina')">Maratona Masculina</li>
+            <li onclick="showWinners('Marcha Atlética Feminina de 20 km')">Marcha Atlética Feminina de 20 km</li>
+            <li onclick="showWinners('Maratona Feminina')">Maratona Feminina</li>
+          </ul>
+
+          <li onclick="toggleSublist('saltos-sublist', 'toggle-icon-saltos')" class="subsection-title">Saltos e Arremessos <span id="toggle-icon-saltos">►</span></li>
+          <ul id="saltos-sublist" class="sublist hidden">
+            <li onclick="showWinners('Decatlo Masculino')">Decatlo Masculino</li>
+            <li onclick="showWinners('Lançamento de disco masculino')">Lançamento de disco masculino</li>
+            <li onclick="showWinners('Lançamento de martelo masculino')">Lançamento de martelo masculino</li>
+            <li onclick="showWinners('Salto em altura masculino')">Salto em altura masculino</li>
+            <li onclick="showWinners('Lançamento de dardo masculino')">Lançamento de dardo masculino</li>
+            <li onclick="showWinners('Salto em distância masculino')">Salto em distância masculino</li>
+            <li onclick="showWinners('Salto com vara masculino')">Salto com vara masculino</li>
+            <li onclick="showWinners('Arremesso de Peso Masculino')">Arremesso de Peso Masculino</li>
+            <li onclick="showWinners('Salto triplo masculino')">Salto triplo masculino</li>
+            <li onclick="showWinners('Lançamento de disco feminino')">Lançamento de disco feminino</li>
+            <li onclick="showWinners('Lançamento de martelo feminino')">Lançamento de martelo feminino</li>
+            <li onclick="showWinners('Heptatlo Feminino')">Heptatlo Feminino</li>
+            <li onclick="showWinners('Salto em altura feminino')">Salto em altura feminino</li>
+            <li onclick="showWinners('Lançamento de dardo feminino')">Lançamento de dardo feminino</li>
+            <li onclick="showWinners('Salto em distância feminino')">Salto em distância feminino</li>
+            <li onclick="showWinners('Salto com vara feminino')">Salto com vara feminino</li>
+            <li onclick="showWinners('Arremesso de peso feminino')">Arremesso de peso feminino</li>
+            <li onclick="showWinners('Salto triplo feminino')">Salto triplo feminino</li>
+          </ul>
+        </ul>
+<!-- código anterior omitido para foco -->
+<ul id="sports-list">
+  
+  <!-- Outras Modalidades -->
+  <li onclick="showWinners('Basquete 3x3')">Basquete 3x3</li>
+  <li onclick="showWinners('Tiro com arco')">Tiro com arco</li>
+  <li onclick="showWinners('Ginástica Artística')">Ginástica Artística</li>
+  <li onclick="showWinners('Natação Artística')">Natação Artística</li>
+  <li onclick="showWinners('Badminton')">Badminton</li>
+  <li onclick="showWinners('Basquetebol')">Basquetebol</li>
+  <li onclick="showWinners('Vôlei de praia')">Vôlei de praia</li>
+  <li onclick="showWinners('Boxe')">Boxe</li>
+  <li onclick="showWinners('Quebra')">Quebra</li>
+  <li onclick="showWinners('Canoagem Slalom')">Canoagem Slalom</li>
+  <li onclick="showWinners('Canoagem de velocidade')">Canoagem de velocidade</li>
+  <li onclick="showWinners('Ciclismo BMX Freestyle')">Ciclismo BMX Freestyle</li>
+  <li onclick="showWinners('Ciclismo BMX Racing')">Ciclismo BMX Racing</li>
+  <li onclick="showWinners('Ciclismo Mountain Bike')">Ciclismo Mountain Bike</li>
+  <li onclick="showWinners('Estrada de Ciclismo')">Estrada de Ciclismo</li>
+  <li onclick="showWinners('Pista de Ciclismo')">Pista de Ciclismo</li>
+  <li onclick="showWinners('Mergulhando')">Mergulhando</li>
+  <li onclick="showWinners('Equestre')">Equestre</li>
+  <li onclick="showWinners('Esgrima')">Esgrima</li>
+  <li onclick="showWinners('Futebol')">Futebol</li>
+  <li onclick="showWinners('Golfe')">Golfe</li>
+  <li onclick="showWinners('Handebol')">Handebol</li>
+  <li onclick="showWinners('Hóquei')">Hóquei</li>
+  <li onclick="showWinners('Judo')">Judo</li>
+  <li onclick="showWinners('Maratona de Natação')">Maratona de Natação</li>
+  <li onclick="showWinners('Pentatlo Moderno')">Pentatlo Moderno</li>
+  <li onclick="showWinners('Ginástica Rítmica')">Ginástica Rítmica</li>
+  <li onclick="showWinners('Remo')">Remo</li>
+  <li onclick="showWinners('Rugby Sevens')">Rugby Sevens</li>
+  <li onclick="showWinners('Navegação')">Navegação</li>
+  <li onclick="showWinners('Tiroteio')">Tiroteio</li>
+  <li onclick="showWinners('Skate')">Skate</li>
+  <li onclick="showWinners('Escalada Esportiva')">Escalada Esportiva</li>
+  <li onclick="showWinners('Surfe')">Surfe</li>
+  <li onclick="showWinners('Natação')">Natação</li>
+  <li onclick="showWinners('Tênis de mesa')">Tênis de mesa</li>
+  <li onclick="showWinners('Taekwondo')">Taekwondo</li>
+  <li onclick="showWinners('Tênis')">Tênis</li>
+  <li onclick="showWinners('Ginástica de trampolim')">Ginástica de trampolim</li>
+  <li onclick="showWinners('Triatlo')">Triatlo</li>
+  <li onclick="showWinners('Voleibol')">Voleibol</li>
+  <li onclick="showWinners('Pólo aquático')">Pólo aquático</li>
+  <li onclick="showWinners('Levantamento de peso')">Levantamento de peso</li>
+  <li onclick="showWinners('Luta livre')">Luta livre</li>
+      </ul>
+        </aside>
+    <main class="content">
+      <h1>Jogos Olímpicos de Paris 2024</h1>
+      <p>Selecione uma modalidade no menu para ver e editar os vencedores.</p>
+      <button id="back-button" onclick="goBack()">⬅ Voltar</button>
+      <div id="winner-section" class="hidden">
+        <h2 id="sport-title"></h2>
+        <label for="winner-input">Vencedor:</label>
+        <input type="text" id="winner-input" placeholder="Digite o nome do vencedor"/>
+        <button onclick="saveWinner()">Salvar</button>
+        <p><strong>Último vencedor:</strong> <span id="winner-display">Nenhum registrado</span></p>
+      </div>
+    </main>
+  </div>
+  <script>
+    const winners = JSON.parse(localStorage.getItem('winners')) || {};
+
+    function showWinners(sport) {
+      document.getElementById('sidebar').classList.add('hidden');
+      document.getElementById('winner-section').classList.remove('hidden');
+      document.getElementById('back-button').style.display = 'inline-block';
+      document.getElementById('sport-title').textContent = sport;
+      document.getElementById('winner-input').value = '';
+      document.getElementById('winner-display').textContent = winners[sport] || "Nenhum registrado";
+    }
+
+    function saveWinner() {
+      const sport = document.getElementById('sport-title').textContent;
+      const winner = document.getElementById('winner-input').value.trim();
+      if (winner) {
+        winners[sport] = winner;
+        localStorage.setItem('winners', JSON.stringify(winners));
+        document.getElementById('winner-display').textContent = winner;
+        alert(`Vencedor salvo para ${sport}: ${winner}`);
+      }
+    }
+
+    function toggleSublist(id, iconId) {
+      const sublist = document.getElementById(id);
+      const icon = document.getElementById(iconId);
+      const isHidden = sublist.classList.toggle("hidden");
+      icon.textContent = isHidden ? "►" : "▼";
+    }
+
+    function goBack() {
+      document.getElementById('sidebar').classList.remove('hidden');
+      document.getElementById('winner-section').classList.add('hidden');
+      document.getElementById('back-button').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
